@@ -1,5 +1,6 @@
 package com.prgguru.jersey;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -57,6 +58,24 @@ public class Register {
 					"Error occured");
 		}
 		return response;
+
+	}
+	
+	@GET
+	@Path("/getall")
+	// Produces JSON as response
+	@Produces(MediaType.APPLICATION_JSON)
+	// @Produces("application/json")
+	// @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	// @Produces(MediaType.TEXT_PLAIN)
+	public List<User> getall() {
+		String response = "";
+		List<User> list = userEJB.getAll();
+		response = Utitlity.constructJSON("register", true);
+		List<String> stringList = new ArrayList<String>();
+		stringList.add("11");
+		stringList.add("22");
+		return list;
 
 	}
 
