@@ -2,6 +2,8 @@ package entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.sql.Timestamp;
 
 
@@ -10,6 +12,7 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
+@XmlRootElement
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
