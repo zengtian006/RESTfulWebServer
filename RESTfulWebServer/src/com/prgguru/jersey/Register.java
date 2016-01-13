@@ -8,7 +8,9 @@ import javax.ejb.Stateless;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -27,16 +29,17 @@ public class Register {
 	UserEJB userEJB;
 
 	// HTTP Get Method
-	@GET
+//	@GET
+	@POST
 	// Path: http://localhost/<appln-folder-name>/register/doregister
 	@Path("/doregister")
 	// Produces JSON as response
 	@Produces(MediaType.APPLICATION_JSON)
 	// Query parameters are parameters:
 	// http://localhost/<appln-folder-name>/register/doregister?name=pqrs&username=abc&password=xyz
-	public String doRegister(@QueryParam("name") String name,
-			@QueryParam("username") String uname,
-			@QueryParam("password") String pwd) {
+	public String doRegister(@FormParam("name") String name,
+			@FormParam("username") String uname,
+			@FormParam("password") String pwd) {
 		String response = "";
 		System.out.println("Inside doLogin " + uname + "  " + pwd);
 		int retCode = registerUser(name, uname, pwd);
